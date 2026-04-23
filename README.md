@@ -1,159 +1,111 @@
-#  Statistical Analysis of E-Learning Platform Usage
+# Statistical Analysis of E-Learning Platform Usage
+### 22CS49 — 4th Semester Mini Project | 2025–26
 
-##  Overview
-
-This project presents a comprehensive statistical analysis of student interaction data from an E-Learning platform. It aims to uncover patterns between student engagement and academic performance using statistical techniques, data visualization, and predictive modeling.
-
-The project is implemented as a complete data pipeline, starting from data generation to an interactive web-based dashboard.
+A comprehensive statistical data science project analysing student engagement,
+learning behaviour, and academic performance on an e-learning platform.
 
 ---
 
-##  Objectives
+## Team
 
-* Analyze student engagement metrics such as login frequency, session duration, and course completion
-* Identify correlations between platform usage and academic performance
-* Perform hypothesis testing to validate insights
-* Build predictive models to detect at-risk students
-* Develop an interactive dashboard for visualization
-
----
-
-##  Project Architecture
-
-### 🔹 Data Layer
-
-* Synthetic data generation using Faker (or Kaggle datasets)
-* Storage using SQLite database
-
-### 🔹 Processing Layer
-
-* Data cleaning and preprocessing using Pandas
-* Feature engineering (Engagement Score, Completion Rate)
-
-### 🔹 Statistical Analysis
-
-* Correlation Analysis (Pearson)
-* Hypothesis Testing (T-test)
-* Regression Analysis (OLS using Statsmodels)
-
-### 🔹 Machine Learning
-
-* Student clustering (K-Means)
-* Performance prediction (Linear Regression)
-
-### 🔹 Visualization Layer
-
-* Static plots: Matplotlib, Seaborn
-* Interactive charts: Plotly
-
-### 🔹 Deployment
-
-* Streamlit dashboard for real-time interaction
+| Name | Role |
+|------|------|
+| **Mallya Moni** *(Team Lead)* | End-to-end system architecture, statistical inference engine (OLS / hypothesis testing), predictive modelling for at-risk student patterns |
+| **Nandana Raghunath** | Automated synthetic data generation (Faker), SQLite database schema design and management |
+| **Pari Tirthwani** | Exploratory data analysis (EDA), interactive visual components (Plotly, Seaborn) |
 
 ---
 
-##  Tech Stack
+## Objectives
 
-| Category         | Tools Used                  |
-| ---------------- | --------------------------- |
-| Language         | Python 3.x                  |
-| Data Analysis    | Pandas, NumPy               |
-| Statistics       | SciPy, Statsmodels          |
-| Machine Learning | Scikit-learn                |
-| Visualization    | Matplotlib, Seaborn, Plotly |
-| Database         | SQLite                      |
-| Deployment       | Streamlit                   |
-| IDE              | Jupyter Notebook, VS Code   |
+- Analyse student engagement metrics: login frequency, video watch %, assignments, forum activity
+- Identify correlations between platform usage and quiz performance
+- Perform hypothesis testing (t-test, ANOVA, chi-square) to validate insights statistically
+- Build predictive models to detect at-risk students early
+- Deliver findings through an interactive Streamlit dashboard
 
 ---
 
-##  Key Features
+## Repository Structure
 
-*  Correlation Heatmaps
-*  Distribution Analysis (Histograms)
-*  Regression Modeling with Statistical Output
-*  Student Segmentation (Clustering)
-*  Interactive Dashboard (Streamlit)
-
----
-
-##  Screenshots (To be added)
-
-* Dashboard Overview
-* Correlation Heatmap
-* Session Duration Distribution
-* Regression Output Summary
-* Student Segmentation Visualization
-
----
-
-##  Methodology
-
-### 1. Data Generation & Storage
-
-Synthetic datasets were generated to simulate real-world student activity and stored in SQLite.
-
-### 2. Data Processing
-
-Data was cleaned, normalized, and transformed into meaningful features such as Engagement Score.
-
-### 3. Statistical Analysis
-
-Hypothesis testing and regression analysis were conducted to evaluate relationships between engagement and performance.
-
-### 4. Predictive Modeling
-
-Machine learning techniques were used to classify student behavior and predict outcomes.
-
-### 5. Visualization & Deployment
-
-Insights were presented through visualizations and deployed using Streamlit for interactive exploration.
-
----
-
-##  Individual Contribution
-
-* Designed complete system architecture
-* Implemented statistical models (T-test, regression)
-* Built engagement scoring system
-* Developed interactive Streamlit dashboard
-* Integrated visualization components
-
----
-
-##  How to Run
-
-```bash
-# Clone the repository
-git clone https://github.com/your-username/e-learning-usage-statistical-analysis.git
-
-# Navigate into the project
-cd e-learning-usage-statistical-analysis
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Run Streamlit app
-streamlit run app.py
+```
+e-learning-usage-statistical-analysis/
+├── notebooks/
+│   ├── 01_data_generation.ipynb       <- Nandana: synthetic data + SQLite
+│   ├── 02_eda_visualisation.ipynb     <- Pari: EDA + interactive charts
+│   ├── 03_statistical_inference.ipynb <- Mallya: hypothesis tests + OLS
+│   └── 04_predictive_modelling.ipynb  <- Mallya: regression + clustering
+├── data/
+│   └── elearning_data.csv             <- Clean dataset (1200 students, 11 features)
+├── src/
+│   └── db_utils.py                    <- SQLite query helper functions
+├── outputs/
+│   ├── figures/                       <- Saved chart images
+│   └── reports/                       <- Exported analysis reports
+├── requirements.txt
+├── .gitignore
+└── README.md
 ```
 
 ---
 
-##  Future Enhancements
+## Dataset
 
-* Dropout prediction system
-* Recommendation engine for learning content
-* Real-time data integration
-* Advanced ML models
+Synthetic dataset of **1200 student records**, 11 features, seed=42 for reproducibility.
+
+| Column | Type | Description |
+|--------|------|-------------|
+| student_id | str | Unique ID (STU1000-STU2199) |
+| name | str | Student name (Faker, en_IN locale) |
+| age | int | Age 18-30 |
+| gender | str | Male / Female / Non-binary |
+| course | str | One of 6 course types |
+| logins_per_week | float | Avg weekly platform logins |
+| video_watch_pct | float | Percentage of video content watched (0-100) |
+| forum_posts | int | Forum contributions count |
+| assignments_submitted | int | Assignments submitted out of 10 |
+| quiz_score | float | Final quiz score (0-100) — main outcome variable |
+| course_completed | int | Binary: 1 = completed, 0 = not completed |
 
 ---
 
-##  Conclusion
+## Tech Stack
 
-This project demonstrates how data analytics and statistical modeling can provide actionable insights into student learning behavior, enabling better decision-making in educational platforms.
+| Layer | Tools |
+|-------|-------|
+| Data generation | Python, Faker |
+| Storage | CSV, SQLite |
+| Processing | Pandas, NumPy |
+| Statistical analysis | SciPy, Statsmodels |
+| Machine learning | scikit-learn |
+| Visualisation | Seaborn, Matplotlib, Plotly |
+| Dashboard | Streamlit |
+| Version control | Git, GitHub |
 
 ---
 
-##  License
+## Progress Tracker
 
-This project is for academic and educational purposes.
+- [x] Week 1, Day 1 — Project scaffold, README, dataset generation
+- [ ] Week 1, Day 2 — Data cleaning, SQLite setup, EDA start
+- [ ] Week 1, Day 3 — Full EDA, feature engineering
+- [ ] Week 1, Day 4 — Hypothesis testing, correlation analysis
+- [ ] Week 1, Day 5 — OLS baseline, review prep
+- [ ] Week 2 — Full inference + predictive modelling
+- [ ] Week 3 — Streamlit dashboard
+- [ ] Week 4 — Final polish + submission
+
+---
+
+## How to Run
+
+```bash
+git clone https://github.com/mallya-m/e-learning-usage-statistical-analysis.git
+cd e-learning-usage-statistical-analysis
+pip install -r requirements.txt
+jupyter notebook
+```
+
+---
+
+*Department of Computer Science and Engineering | 2025-26*
